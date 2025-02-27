@@ -110,7 +110,16 @@ const zoomResetDisabled = computed(() => zoom.value == 100)
 
 function layoutRangeToArray() {
   const layout = toValue(plotlyLayout)
-  return [layout.xaxis.range[0], layout.xaxis.range[1], layout.yaxis.range[0], layout.yaxis.range[1]]
+  let arr = [0, 0, 0, 0]
+  if (layout?.xaxis?.range !== undefined) {
+    arr[0] = layout.xaxis.range[0]
+    arr[1] = layout.xaxis.range[1]
+  }
+  if (layout?.yaxis?.range !== undefined) {
+    arr[2] = layout.yaxis.range[0]
+    arr[3] = layout.yaxis.range[1]
+  }
+  return arr
 }
 
 watch(
