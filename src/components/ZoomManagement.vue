@@ -246,10 +246,6 @@ function hideTooltip(tooltipNumber) {
   width: 2rem;
 }
 
-.map-icon {
-  color: #8300BF
-}
-
 .inactive {
   pointer-events: none;
   opacity: 0.4;
