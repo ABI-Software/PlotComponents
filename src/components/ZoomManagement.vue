@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <map-svg-sprite-color />
-    <div :class="{inactive: !enableControls}" class="bottom-right-control">
+    <div :class="{inactive: !enableControls}" class="controls">
       <el-popover
         v-model="hoverVisibilities[0].value"
         content="Zoom in"
@@ -41,7 +41,7 @@
         </template>
       </el-popover>
 
-      <el-select size="small" v-model="selectZoom" placeholder="100%">
+      <el-select size="small" v-model="selectZoom" placeholder="100%" class="zoom-levels">
         <el-option v-for="item in zoomLevels" :key="item.value" :label="item.label" :value="item.value"> </el-option>
       </el-select>
       <!-- The commented part remains unchanged -->
@@ -143,7 +143,7 @@ watch(
 )
 
 watch(selectZoom, () => {
-  const selectZoomValue = typeof toValue(selectZoom) === "number" ? toValue(selectZoom) : Number(toValue(selectZoom).replace("%", ""))
+  const selectZoomValue = typeof toValue(selectZoom) === 'number' ? toValue(selectZoom) : Number(toValue(selectZoom).replace('%', ''))
   if (selectZoomValue !== toValue(zoom)) {
     const positiveChange = selectZoomValue > toValue(zoom)
     const zoomOffset = toValue(zoom) % 100
@@ -241,8 +241,29 @@ function hideTooltip(tooltipNumber) {
 </script>
 
 <style scoped>
+
+.icon-button {
+  width: 2rem;
+}
+
+.map-icon {
+  color: #8300BF
+}
+
 .inactive {
   pointer-events: none;
   opacity: 0.4;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.zoom-levels {
+  width: fit-content;
+  min-width: 5rem;
 }
 </style>
