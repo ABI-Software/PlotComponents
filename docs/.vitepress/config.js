@@ -8,27 +8,31 @@ const versionNumber = process.env.npm_package_version
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "PlotVuer",
-  description: "API documentation for PlotVuer",
-  base: '/plotvuer/',
+  title: "PlotComponents",
+  description: "API documentation for PlotComponents",
+  base: '/plotcomponents/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
       {
-        text: 'API Reference',
-        link: '/components/PlotVuer'
+        text: 'API Reference DataFiltering',
+        link: '/components/DataFiltering'
+      },
+      {
+        text: 'API Reference ZoomManagement',
+        link: '/components/ZoomManagement'
       }
     ],
 
     sidebar: [
       {
-        text: 'Live Demo',
-        link: '/demo'
+        text: 'API Reference DataFiltering',
+        link: '/components/DataFiltering'
       },
       {
-        text: 'API Reference',
-        link: '/components/PlotVuer'
+        text: 'API Reference ZoomManagement',
+        link: '/components/ZoomManagement'
       },
       {
         text: 'Version',
@@ -41,7 +45,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/ABI-Software/plotvuer' }
+      { icon: 'github', link: 'https://github.com/ABI-Software/plotcomponents' }
     ]
   },
   markdown: { attrs: { disable: true } },

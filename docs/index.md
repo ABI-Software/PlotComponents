@@ -3,14 +3,14 @@
 layout: home
 
 hero:
-  name: "PlotVuer"
+  name: "PlotComponents"
   text: "API documentation"
-  tagline: PlotVuer is a Vue component used in the SPARC portal.
+  tagline: PlotComponents is a collection of Vue components intended for use in the SPARC portal.
   actions:
     - theme: brand
-      text: API Reference
-      link: /components/PlotVuer
-    - theme: alt
-      text: Demo
-      link: /demo
+      text: API Reference DataFiltering
+      link: /components/DataFiltering
+    - theme: brand
+      text: API Reference ZoomManagement
+      link: /components/ZoomManagement
 ---
