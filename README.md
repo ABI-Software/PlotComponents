@@ -21,7 +21,7 @@ npm run serve
 ### Compiles and minifies for production
 
 ```
-npm run build-bundle
+npm run build-package
 ```
 
 ## How to use
