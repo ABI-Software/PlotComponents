@@ -69,6 +69,9 @@
 </template>
 
 <script setup>
+/**
+ * A component to manage zooming a plotly plot with interface elements external to the plot itself.
+ */
 import {ElSelect, ElOption, ElPopover} from 'element-plus'
 import {MapSvgSpriteColor, MapSvgIcon} from '@abi-software/svg-sprite'
 import {computed, ref, toValue, watch} from 'vue'
@@ -76,18 +79,30 @@ import {computed, ref, toValue, watch} from 'vue'
 const plotlyLayout = defineModel()
 
 const {plotlyPlot, plotlyPlotReady, dataReset, helpModeOn} = defineProps({
+  /**
+   * The element the plotly plot is created on.
+   */
   plotlyPlot: {
     type: Element,
     default: null
   },
-  plotlyPlotReady: {
+  /**
+   * Flag to indicate that the plotly plot is ready to be interacted with, off by default.
+   */
+   plotlyPlotReady: {
     type: Boolean
   },
-  dataReset: {
+  /**
+   * Flag to indicate that the data has been fundamentally changed, off by default.
+   */
+   dataReset: {
     type: Boolean,
     default: false
   },
-  helpModeOn: {
+  /**
+   * Flag to indicate that help should be enabled, off by defult.
+   */
+   helpModeOn: {
     type: Boolean,
     default: false
   }
