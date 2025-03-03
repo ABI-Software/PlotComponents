@@ -33,8 +33,12 @@
 </template>
 
 <script setup>
-// import {ref} from 'vue'
-defineEmits(['filter-clicked'])
+defineEmits([
+  /**
+   * Emitted when the filter button is clicked.
+   */
+  'filter-clicked'
+])
 const selectionX = defineModel('selectionX')
 const selectionY = defineModel('selectionY')
 
