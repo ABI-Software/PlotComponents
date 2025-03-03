@@ -50,7 +50,7 @@ The documentation is developed with `vitepress` and `vuese`. Documentation pages
 ### To run in local development mode
 
 ```bash
-npm run docs:watch
+yarn docs:watch
 ```
 
 This will start the documentation server with `vitepress` on port `:5173` and watch the components' changes.
