@@ -7,6 +7,8 @@
     "release:beta": "npm version prerelease --preid=beta; npm publish --tag beta",
     "release:minor": "npm version minor; npm publish",
     "release:patch": "npm version patch;  npm publish",
+    "vuese-gen": "node vuese-generator.js",
+    "vuese-watch": "node vuese-generator.js watch",
     "docs:dev": "vitepress dev docs",
     "docs:build": "npm run vuese-gen; vitepress build docs",
     "docs:preview": "vitepress preview docs"

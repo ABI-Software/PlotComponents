@@ -39,6 +39,13 @@ const selectionX = defineModel('selectionX')
 const selectionY = defineModel('selectionY')
 
 const props = defineProps({
+  /**
+   * An object with properties `x`, and `y`.
+   * Where each property is an array (possibly empty) that contain strings.
+   * Each entry in the array corresponds to a trace in the data.
+   * In the case of a scatter plot the entries will only be in the `x` array.
+   * In the case of the heatmap plot the entries will be in both the `x` array and `y` array.
+   */
   titles: {
     type: Object,
     required: true,

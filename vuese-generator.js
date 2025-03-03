@@ -9,10 +9,10 @@ import fs from 'fs'
 import path from 'path'
 import chokidar from 'chokidar'
 // import { parser } from '@vuese/parser'
-import { parseSource } from 'vue-docgen-api'
-import { Render } from '@vuese/markdown-render'
+import {parseSource} from 'vue-docgen-api'
+import {Render} from '@vuese/markdown-render'
 
-const watchMode = process.argv.find((argv) => argv === 'watch')
+const watchMode = process.argv.find(argv => argv === 'watch')
 
 const componentsDir = 'src/components'
 const components = ['DataFiltering.vue', 'ZoomManagement.vue']
@@ -25,14 +25,8 @@ function generateMarkdown(file) {
   try {
     // const parserResult = parser(fileContent)
     const parserResult = parseSource(fileContent, fileWithPath)
-    parserResult.then((result) => {
-      const {
-        displayName: name,
-        description: desc,
-        props,
-        events,
-        methods
-      } = result
+    parserResult.then(result => {
+      const {displayName: name, description: desc, props, events, methods} = result
 
       // transform props to vuese styles
       const parseResult = {
@@ -42,7 +36,7 @@ function generateMarkdown(file) {
         },
         props: transformData(props),
         events: transformData(events),
-        methods: transformData(methods),
+        methods: transformData(methods)
       }
       const r = new Render(parseResult)
       const renderResult = r.render()
@@ -54,7 +48,7 @@ function generateMarkdown(file) {
         fs.mkdirSync(outputDir)
       }
 
-      fs.writeFile(`${outputDir}/${componentName}.md`, markdownContent, (err) => {
+      fs.writeFile(`${outputDir}/${componentName}.md`, markdownContent, err => {
         if (err) {
           console.error(`Error writing markdown file for ${componentName}`, err)
         } else {
@@ -62,13 +56,17 @@ function generateMarkdown(file) {
         }
       })
     })
-  } catch(e) {
+  } catch (e) {
     console.error(e)
   }
 }
 
 function transformData(data) {
-  data.forEach((prop) => {
+  if (data === undefined) {
+    return []
+  }
+
+  data.forEach(prop => {
     prop.name = prop.name
 
     if (prop.description) {
@@ -86,7 +84,7 @@ function transformData(data) {
     // events
     if (prop.properties) {
       prop.argumentsDesc = []
-      prop.properties.forEach((param) => {
+      prop.properties.forEach(param => {
         const argName = param.name || param.description
         prop.argumentsDesc.push(argName)
       })
@@ -95,7 +93,7 @@ function transformData(data) {
     // methods
     if (prop.params) {
       prop.argumentsDesc = []
-      prop.params.forEach((param) => {
+      prop.params.forEach(param => {
         const argName = param.name || param.description
         prop.argumentsDesc.push(argName)
       })
@@ -105,7 +103,7 @@ function transformData(data) {
 }
 
 // To generate markdown files - one time
-components.forEach((component) => {
+components.forEach(component => {
   console.log(`Write markdown file for ${component} on first load.`)
   generateMarkdown(component)
 })
@@ -114,10 +112,10 @@ components.forEach((component) => {
 if (watchMode) {
   const watcher = chokidar.watch(components, {
     cwd: componentsDir,
-    ignoreInitial: true,
+    ignoreInitial: true
   })
 
-  watcher.on('change', (file) => {
+  watcher.on('change', file => {
     console.log(`The component ${file} has changed!`)
     generateMarkdown(file)
   })
