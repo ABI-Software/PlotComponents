@@ -1,27 +1,19 @@
 # Plot Components
 
 [![npm version](https://badge.fury.io/js/%40abi-software%2Fplotcomponents.svg)](https://badge.fury.io/js/%40abi-software%2Fplotcomponents)
-[![Maintainability](https://api.codeclimate.com/v1/badges/8dd727f153711aaae6e1/maintainability)](https://codeclimate.com/github/Tehsurfer/plotcomponents/maintainability)
 
 This project is for providing plot interface components for Plotly plots.
 
 ## Project installation
 
 ```
-npm i @abi-software/plotcomponents
-```
-
-## Project setup
-
-```
-npm install
-npm run serve
+yarn add @abi-software/plotcomponents
 ```
 
 ### Compiles and minifies for production
 
 ```
-npm run build-package
+yarn build-package
 ```
 
 ## How to use
