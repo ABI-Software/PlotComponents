@@ -87,13 +87,14 @@ const {plotlyPlot, plotlyPlotReady, dataReset, helpModeOn} = defineProps({
     default: null
   },
   /**
-   * Flag to indicate that the plotly plot is ready to be interacted with, off by default.
+   * Flag to indicate that the plotly plot is ready to be interacted with, false by default.
    */
    plotlyPlotReady: {
-    type: Boolean
+    type: Boolean,
+    default: false
   },
   /**
-   * Flag to indicate that the data has been fundamentally changed, off by default.
+   * Flag to indicate that the data has been fundamentally changed, false by default.
    */
    dataReset: {
     type: Boolean,
@@ -256,7 +257,6 @@ function hideTooltip(tooltipNumber) {
 </script>
 
 <style scoped>
-
 .icon-button {
   width: 2rem;
 }
