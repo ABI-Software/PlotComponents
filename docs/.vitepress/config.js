@@ -10,7 +10,7 @@ const versionNumber = process.env.npm_package_version
 export default defineConfig({
   title: "PlotComponents",
   description: "API documentation for PlotComponents",
-  base: '/plotcomponents/',
+  base: '/PlotComponents/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
