@@ -63,7 +63,7 @@ function generateMarkdown(file) {
 
 function transformData(data) {
   if (data === undefined) {
-    return []
+    return undefined
   }
 
   data.forEach(prop => {
