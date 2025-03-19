@@ -10,27 +10,7 @@
 <script setup>
 import {computed, toValue} from 'vue'
 
-defineEmits([
-  /**
-   * Emitted when the scale mode is switched.
-   */
-  'scale-mode-switched'
-])
-
 const model = defineModel()
-
-
-const {plotMetadata} = defineProps({
-  /**
-   * The metadata for the plot.
-   */
-   plotMetadata: {
-    type: Object,
-    default: undefined
-  },
-})
-
-const logScaleAvailable = computed(() => toValue(plotMetadata)?.attrs?.logScale)
 </script>
 
 <style scoped></style>
