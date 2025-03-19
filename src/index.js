@@ -1,6 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import ZoomManagement from './components/ZoomManagement.vue'
 import DataFiltering from './components/DataFiltering.vue'
+import LogSwitch from './components/LogSwitch.vue'
+import ZoomManagement from './components/ZoomManagement.vue'
 
-export {ZoomManagement, DataFiltering}
+export {DataFiltering, LogSwitch, ZoomManagement}
