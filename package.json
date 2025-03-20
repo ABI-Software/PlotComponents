@@ -46,7 +46,7 @@
     "@vuese/markdown-render": "^2.11.3",
     "chokidar": "^4.0.1",
     "concurrently": "^9.0.1",
-    "eslint": "^9.22.0",
+    "eslint": "^8.57.1",
     "prettier": "^3.3.3",
     "sass": "^1.83.4",
     "unplugin-vue-components": "^0.25.0",
