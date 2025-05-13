@@ -78,8 +78,8 @@ import {computed, ref, toValue, watch} from 'vue'
 
 const plotlyLayout = defineModel()
 
-const {plotlyPlot, plotlyPlotReady, dataReset, helpModeOn} = defineProps({
-  /**
+const props = defineProps({
+    /**
    * The element the plotly plot is created on.
    */
   plotlyPlot: {
@@ -119,7 +119,7 @@ let initialisationPerformed = false
 let tooltipWait = null
 let initialRange = []
 
-const enableControls = computed(() => toValue(plotlyPlot) instanceof Element && toValue(plotlyPlotReady))
+const enableControls = computed(() => toValue(props.plotlyPlot) instanceof Element && toValue(props.plotlyPlotReady))
 const zoomInDisabled = computed(() => zoom.value >= maxZoom)
 const zoomOutDisabled = computed(() => zoom.value <= 100)
 const zoomResetDisabled = computed(() => zoom.value == 100)
@@ -139,20 +139,20 @@ function layoutRangeToArray() {
 }
 
 watch(
-  () => dataReset,
+  () => props.dataReset,
   () => {
-    if (toValue(dataReset)) {
+    if (toValue(props.dataReset)) {
       initialRange = layoutRangeToArray()
     }
   }
 )
 
 watch(
-  () => plotlyPlotReady,
+  () => props.plotlyPlotReady,
   () => {
-    if (toValue(plotlyPlotReady) && !initialisationPerformed) {
+    if (toValue(props.plotlyPlotReady) && !initialisationPerformed) {
       initialRange = layoutRangeToArray()
-      plotlyPlot.on('plotly_relayout', plotLayoutChanged)
+      props.plotlyPlot.on('plotly_relayout', plotLayoutChanged)
       initialisationPerformed = true
     }
   }
@@ -240,7 +240,7 @@ function plotLayoutChanged(eventData) {
 createZoomPercentages()
 
 function showTooltip(tooltipNumber) {
-  if (toValue(helpModeOn)) {
+  if (toValue(props.helpModeOn)) {
     hoverVisibilities.value[tooltipNumber].value = true
     tooltipWait = setTimeout(() => {
       hoverVisibilities.value[tooltipNumber].value = true
@@ -249,7 +249,7 @@ function showTooltip(tooltipNumber) {
 }
 
 function hideTooltip(tooltipNumber) {
-  if (!toValue(helpModeOn)) {
+  if (!toValue(props.helpModeOn)) {
     hoverVisibilities.value[tooltipNumber].value = false
     clearInterval(tooltipWait)
   }
